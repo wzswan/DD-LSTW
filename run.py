@@ -1,15 +1,18 @@
 import tfidf
 import numpy
+import collections
 
 fai_result ={}
 
 data = tfidf.TfIdf()
 fai = data.csv2dict("/home/wzswan/Downloads/github/DD-LSTW/fai.csv")
+fai_count = collections.Counter(fai)
 pe = data.csv2dict("/home/wzswan/Downloads/github/DD-LSTW/pe.csv")
 stock = data.csv2dict("/home/wzswan/Downloads/github/DD-LSTW/stock.csv")
 print fai
-print pe
-print stock
+print fai_count
+#print pe
+#print stock
 table = tfidf.TfIdf()
 table.add_document("FAI",fai)
 table.add_document("PE",pe)
@@ -28,4 +31,4 @@ fai_result = {'24':table.similarities(["24"]), '25': table.similarities(["25"]),
 '18':table.similarities(["18"]) ,'30':table.similarities(["30"]) ,'37':table.similarities(["37"]) ,
 '35':table.similarities(["35"]) ,'34':table.similarities(["34"]) ,'19':table.similarities(["19"]) ,'32':table.similarities(["32"])}
 
-print fai_result
+#print fai_result
